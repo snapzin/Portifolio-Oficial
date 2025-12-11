@@ -4,7 +4,7 @@
 
 Bem-vindo ao repositório oficial do meu portfólio pessoal. Este projeto foi desenvolvido com foco em uma identidade visual única, combinando estética minimalista dark com elementos do universo do Batman.
 
-![Project Preview](client/public/images/hero-bg.png)
+![Project Preview](client/public/images/hero-bg-batman.gif)
 
 ## 🚀 Tecnologias Utilizadas
 
