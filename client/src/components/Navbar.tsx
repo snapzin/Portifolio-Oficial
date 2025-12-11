@@ -7,12 +7,35 @@ import { cn } from "@/lib/utils";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("/");
   const [location] = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
+
+      // Scroll Spy Logic
+      const sections = navLinks.map(link => link.href === "/" ? "hero" : link.href.substring(1));
+      
+      // Find the current section
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          // Check if section is in viewport (with some offset for navbar)
+          if (rect.top <= 100 && rect.bottom >= 100) {
+            setActiveSection(section === "hero" ? "/" : `#${section}`);
+            break;
+          }
+        }
+      }
+      
+      // Special case for top of page
+      if (window.scrollY < 100) {
+        setActiveSection("/");
+      }
     };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -55,10 +78,16 @@ export default function Navbar() {
             <button
               key={link.name}
               onClick={() => scrollToSection(link.href)}
-              className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors relative group"
+              className={cn(
+                "text-sm font-medium transition-colors relative group",
+                activeSection === link.href ? "text-primary" : "text-muted-foreground hover:text-primary"
+              )}
             >
               {link.name}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
+              <span className={cn(
+                "absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300",
+                activeSection === link.href ? "w-full" : "w-0 group-hover:w-full"
+              )} />
             </button>
           ))}
         </div>

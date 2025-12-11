@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Background Elements */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-[url('/images/hero-bg-batman.gif')] bg-cover bg-center opacity-30 mix-blend-screen" />
