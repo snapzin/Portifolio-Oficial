@@ -17,7 +17,7 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-6xl md:text-8xl font-black tracking-tighter mb-4 relative inline-block"
+          className="text-7xl md:text-9xl font-black tracking-tighter mb-8 relative inline-block"
         >
           <div className="flex items-center gap-4">
             <div className="relative">
@@ -27,7 +27,7 @@ export default function Hero() {
             <img 
               src="/images/batman-dancing.gif" 
               alt="Batman Dancing" 
-              className="h-16 md:h-24 w-auto object-contain -mt-4"
+              className="h-24 md:h-40 w-auto object-contain -mt-6 md:-mt-10"
             />
           </div>
         </motion.h1>
