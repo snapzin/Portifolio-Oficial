@@ -45,11 +45,8 @@ export default function Navbar() {
       )}
     >
       <div className="container flex items-center justify-between">
-        <Link href="/">
-          <a className="flex items-center gap-2 group cursor-pointer">
-            
+        <Link href="/" className="flex items-center gap-2 group cursor-pointer">
             <span className="font-mono font-bold text-xl tracking-tighter">PORTFOLIO</span>
-          </a>
         </Link>
 
         {/* Desktop Navigation */}
