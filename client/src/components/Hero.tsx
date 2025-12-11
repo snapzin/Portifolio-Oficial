@@ -39,8 +39,17 @@ export default function Hero() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="text-6xl md:text-8xl font-black tracking-tighter mb-4 relative inline-block"
         >
-          <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-b from-white to-white/50">SNPAZIN</span>
-          <span className="absolute -inset-1 text-primary/20 blur-lg select-none z-0">SNPAZIN</span>
+          <div className="flex items-center gap-4">
+            <div className="relative">
+              <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-b from-white to-white/50">SNPAZIN</span>
+              <span className="absolute -inset-1 text-primary/20 blur-lg select-none z-0">SNPAZIN</span>
+            </div>
+            <img 
+              src="/images/batman-dancing.gif" 
+              alt="Batman Dancing" 
+              className="h-16 md:h-24 w-auto object-contain -mt-4"
+            />
+          </div>
         </motion.h1>
 
         <motion.div
