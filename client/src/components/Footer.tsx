@@ -25,9 +25,9 @@ export default function Footer() {
     },
     {
       name: "Email",
-      username: "eu@linn.lat",
+      username: "zayonantunes@gmail.com",
       icon: Mail,
-      href: "mailto:eu@linn.lat",
+      href: "mailto:zayonantunes@gmail.com",
       color: "hover:text-primary"
     }
   ];
