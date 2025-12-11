@@ -1,21 +1,23 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Copy, Check, Gamepad2, X, MessageCircle, Github, Music, Monitor } from "lucide-react";
+import { Copy, Check, Gamepad2, X, Github, Music, Monitor } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { useLanyard, DiscordStatus } from "@/hooks/useLanyard";
 
 export default function DiscordWidget() {
   const [isOpen, setIsOpen] = useState(true);
   const [copied, setCopied] = useState(false);
+  const { data: lanyardData, status } = useLanyard();
 
-  // Dados reais do usuário
-  const user = {
+  // Dados estáticos de fallback
+  const staticUser = {
     id: "783008334516060191",
     username: "._zayon_.",
     global_name: "♕アルカード",
     avatar_url: "https://cdn.discordapp.com/avatars/783008334516060191/594a9ebb3c36c7c9bd92b0af1276e0fe.png",
     banner_url: "https://cdn.discordapp.com/banners/783008334516060191/a_f16352f42a60887e083ebafcfa506eb6.gif",
-    status: "I Am Aspas", // Baseado na bio
+    status_text: "I Am Aspas",
     badges: [
       { name: "Nitro", icon: "https://cdn.discordapp.com/badge-icons/4f33c4a9c64ce221936bd256c356f91f.png" },
       { name: "Server Booster", icon: "https://cdn.discordapp.com/badge-icons/51040c70d4f20a921ad6674ff86fc95c.png" },
@@ -30,11 +32,29 @@ export default function DiscordWidget() {
     ]
   };
 
+  // Mapeamento de cores de status
+  const statusColors: Record<DiscordStatus, string> = {
+    online: "bg-green-500",
+    idle: "bg-yellow-500",
+    dnd: "bg-red-500",
+    offline: "bg-gray-500"
+  };
+
+  const statusTitles: Record<DiscordStatus, string> = {
+    online: "Online",
+    idle: "Ausente",
+    dnd: "Não Perturbe",
+    offline: "Offline"
+  };
+
   const handleCopy = () => {
-    navigator.clipboard.writeText(user.username);
+    navigator.clipboard.writeText(staticUser.username);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
+
+  // Se tiver dados do Lanyard, usa o status da atividade customizada se existir
+  const customStatus = lanyardData?.activities?.find(a => a.type === 4)?.state || staticUser.status_text;
 
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-4 font-sans">
@@ -49,7 +69,7 @@ export default function DiscordWidget() {
             {/* Banner */}
             <div className="h-24 w-full relative overflow-hidden">
               <img 
-                src={user.banner_url} 
+                src={staticUser.banner_url} 
                 alt="Banner" 
                 className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
               />
@@ -69,17 +89,20 @@ export default function DiscordWidget() {
                 {/* Avatar */}
                 <div className="relative w-20 h-20 rounded-full border-[6px] border-[#111] bg-zinc-800">
                   <img 
-                    src={user.avatar_url} 
+                    src={staticUser.avatar_url} 
                     alt="Avatar" 
                     className="w-full h-full rounded-full object-cover"
                   />
-                  <div className="absolute bottom-0 right-0 w-5 h-5 bg-green-500 rounded-full border-4 border-[#111]" title="Online" />
+                  <div 
+                    className={`absolute bottom-0 right-0 w-5 h-5 ${statusColors[status]} rounded-full border-4 border-[#111]`} 
+                    title={statusTitles[status]} 
+                  />
                 </div>
 
                 {/* Badges */}
                 <div className="flex gap-1 mb-2 bg-[#000]/40 p-1 rounded-lg backdrop-blur-sm border border-white/5">
                   <TooltipProvider>
-                    {user.badges.map((badge, i) => (
+                    {staticUser.badges.map((badge, i) => (
                       <Tooltip key={i}>
                         <TooltipTrigger>
                           <img src={badge.icon} alt={badge.name} className="w-5 h-5" />
@@ -95,27 +118,25 @@ export default function DiscordWidget() {
 
               {/* User Info */}
               <div className="mt-3">
-                <h3 className="text-white font-bold text-xl leading-tight">{user.global_name}</h3>
-                <p className="text-white/60 text-sm font-medium">{user.username}</p>
+                <h3 className="text-white font-bold text-xl leading-tight">{staticUser.global_name}</h3>
+                <p className="text-white/60 text-sm font-medium">{staticUser.username}</p>
                 
                 {/* Custom Status */}
                 <div className="flex items-center gap-2 text-xs text-white/80 mt-2 bg-white/5 py-1.5 px-3 rounded-lg border border-white/5 w-fit">
                   <img src="https://cdn.discordapp.com/emojis/1432488933274419200.webp?size=44&quality=lossless" alt="Radiante" className="w-4 h-4" onError={(e) => e.currentTarget.style.display = 'none'} />
-                  <span>{user.status}</span>
+                  <span>{customStatus}</span>
                 </div>
               </div>
 
               {/* Connected Accounts */}
               <div className="mt-4 grid grid-cols-2 gap-2">
-                {user.connections.map((conn, i) => (
+                {staticUser.connections.map((conn, i) => (
                   <div key={i} className="flex items-center gap-2 text-[10px] text-white/50 bg-white/5 p-1.5 rounded border border-white/5 overflow-hidden">
                     <span className="text-white/70 shrink-0">{conn.icon}</span>
                     <span className="truncate">{conn.name}</span>
                   </div>
                 ))}
               </div>
-
-
 
               {/* Actions */}
               <div className="mt-4">
@@ -153,12 +174,15 @@ export default function DiscordWidget() {
           className="bg-[#111] hover:bg-[#222] text-white p-1 rounded-full shadow-lg transition-colors relative group border-2 border-primary/50"
         >
           <img 
-            src={user.avatar_url} 
+            src={staticUser.avatar_url} 
             alt="Open Discord Widget" 
             className="w-12 h-12 rounded-full object-cover"
           />
           <span className="absolute bottom-0 right-0 flex h-4 w-4">
-            <span className="relative inline-flex rounded-full h-4 w-4 bg-green-500 border-2 border-[#111]" title="Online"></span>
+            <span 
+              className={`relative inline-flex rounded-full h-4 w-4 ${statusColors[status]} border-2 border-[#111]`} 
+              title={statusTitles[status]}
+            ></span>
           </span>
         </motion.button>
       )}
