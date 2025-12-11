@@ -11,9 +11,9 @@ export default function Footer() {
     },
     {
       name: "GitHub",
-      username: "@linn",
+      username: "@snapzin",
       icon: Github,
-      href: "https://github.com/linn",
+      href: "https://github.com/snapzin",
       color: "hover:text-white"
     },
     {

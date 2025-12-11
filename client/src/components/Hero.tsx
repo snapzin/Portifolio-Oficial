@@ -66,10 +66,10 @@ export default function Hero() {
           <Button 
             size="lg" 
             className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold text-base px-8 h-12 rounded-none border border-transparent relative overflow-hidden group"
-            onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => window.open('https://github.com/snapzin', '_blank')}
           >
             <span className="relative z-10 flex items-center gap-2">
-              Ver Projetos <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              Ver GitHub <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </span>
             <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
           </Button>
