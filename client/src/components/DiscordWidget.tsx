@@ -115,6 +115,19 @@ export default function DiscordWidget() {
                 ))}
               </div>
 
+              {/* View Full Stats Link */}
+              <div className="mt-2 text-center">
+                <button 
+                  onClick={() => {
+                    setIsOpen(false);
+                    document.getElementById('gamer-profile')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="text-xs text-primary hover:text-primary/80 hover:underline transition-colors"
+                >
+                  Ver estatísticas completas
+                </button>
+              </div>
+
               {/* Actions */}
               <div className="mt-4">
                 <Button 
@@ -148,9 +161,13 @@ export default function DiscordWidget() {
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={() => setIsOpen(true)}
-          className="bg-[#5865F2] hover:bg-[#4752C4] text-white p-3 rounded-full shadow-lg transition-colors relative group"
+          className="bg-[#111] hover:bg-[#222] text-white p-1 rounded-full shadow-lg transition-colors relative group border-2 border-primary/50"
         >
-          <MessageCircle size={24} />
+          <img 
+            src={user.avatar_url} 
+            alt="Open Discord Widget" 
+            className="w-12 h-12 rounded-full object-cover"
+          />
           <span className="absolute right-0 top-0 flex h-3 w-3">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
