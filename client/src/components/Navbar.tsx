@@ -3,6 +3,7 @@ import { Link, useLocation } from "wouter";
 import { Menu, X, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -113,25 +114,51 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Navigation */}
-      {isOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-background border-b border-border p-4 flex flex-col gap-4 animate-in slide-in-from-top-5">
-          {navLinks.map((link) => (
-            <button
-              key={link.name}
-              onClick={() => scrollToSection(link.href)}
-              className="text-left text-lg font-medium py-2 border-b border-border/10 hover:text-primary transition-colors"
-            >
-              {link.name}
-            </button>
-          ))}
-          <Button 
-            className="w-full mt-2 bg-primary text-primary-foreground hover:bg-primary/90"
-            onClick={() => scrollToSection("#contact")}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="md:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-lg border-b border-border overflow-hidden"
           >
-            Entre em contato
-          </Button>
-        </div>
-      )}
+            <div className="p-6 flex flex-col gap-4">
+              {navLinks.map((link, index) => (
+                <motion.button
+                  key={link.name}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  onClick={() => scrollToSection(link.href)}
+                  className={cn(
+                    "text-left text-lg font-medium py-3 border-b border-border/10 transition-colors flex items-center justify-between group",
+                    activeSection === link.href ? "text-primary" : "text-muted-foreground hover:text-primary"
+                  )}
+                >
+                  {link.name}
+                  <span className={cn(
+                    "w-2 h-2 rounded-full transition-all duration-300",
+                    activeSection === link.href ? "bg-primary" : "bg-transparent group-hover:bg-primary/50"
+                  )} />
+                </motion.button>
+              ))}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+              >
+                <Button 
+                  className="w-full mt-4 bg-primary text-primary-foreground hover:bg-primary/90 h-12 text-base font-bold"
+                  onClick={() => scrollToSection("#contact")}
+                >
+                  Entre em contato
+                </Button>
+              </motion.div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }
