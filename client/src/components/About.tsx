@@ -3,9 +3,9 @@ import { Badge } from "@/components/ui/badge";
 
 export default function About() {
   const technologies = [
-    "React & Next.js", "TypeScript", "Node.js", "NestJS", 
-    "Prisma & PostgreSQL", "Tailwind CSS", "Angular", "Svelte",
-    "C#", "Python", "Ruby", "Lua"
+    "React & Next.js", "TypeScript", "Node.js", 
+    "Prisma & PostgreSQL", "Svelte",
+    "C#", "Python", "Lua"
   ];
 
   const specialties = [

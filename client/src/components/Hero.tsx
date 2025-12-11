@@ -20,8 +20,8 @@ export default function Hero() {
           className="mb-8 relative"
         >
           <div className="relative w-32 h-32 md:w-40 md:h-40 mx-auto mb-6">
-            <div className="absolute inset-0 rounded-full border-2 border-dashed border-primary/50 animate-[spin_10s_linear_infinite]" />
-            <div className="absolute inset-2 rounded-full border border-primary/20" />
+            
+            
             <img 
               src="/images/avatar-snpazin.jpg" 
               alt="snpazin Avatar" 
@@ -86,16 +86,7 @@ export default function Hero() {
           </Button>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce"
-        >
-          <div className="w-6 h-10 border-2 border-muted-foreground/30 rounded-full flex justify-center p-1">
-            <div className="w-1 h-2 bg-primary rounded-full animate-[scroll_1.5s_infinite]" />
-          </div>
-        </motion.div>
+        
       </div>
     </section>
   );
