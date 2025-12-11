@@ -4,9 +4,9 @@ export default function Footer() {
   const socialLinks = [
     {
       name: "Instagram",
-      username: "@odeiovava",
+      username: "@1zayon_",
       icon: Instagram,
-      href: "https://instagram.com/odeiovava",
+      href: "https://instagram.com/1zayon_",
       color: "hover:text-pink-500"
     },
     {
@@ -18,7 +18,7 @@ export default function Footer() {
     },
     {
       name: "Discord",
-      username: "@outstaying",
+      username: "@._zayon_.",
       icon: MessageCircle,
       href: "#",
       color: "hover:text-indigo-400"
