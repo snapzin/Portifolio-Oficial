@@ -115,18 +115,7 @@ export default function DiscordWidget() {
                 ))}
               </div>
 
-              {/* View Full Stats Link */}
-              <div className="mt-2 text-center">
-                <button 
-                  onClick={() => {
-                    setIsOpen(false);
-                    document.getElementById('gamer-profile')?.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                  className="text-xs text-primary hover:text-primary/80 hover:underline transition-colors"
-                >
-                  Ver estatísticas completas
-                </button>
-              </div>
+
 
               {/* Actions */}
               <div className="mt-4">
@@ -168,9 +157,8 @@ export default function DiscordWidget() {
             alt="Open Discord Widget" 
             className="w-12 h-12 rounded-full object-cover"
           />
-          <span className="absolute right-0 top-0 flex h-3 w-3">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+          <span className="absolute bottom-0 right-0 flex h-4 w-4">
+            <span className="relative inline-flex rounded-full h-4 w-4 bg-green-500 border-2 border-[#111]" title="Online"></span>
           </span>
         </motion.button>
       )}
