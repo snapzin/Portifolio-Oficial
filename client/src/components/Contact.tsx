@@ -14,8 +14,8 @@ export default function Contact() {
             <div className="relative">
               <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-primary/20 p-1">
                 <img 
-                  src="/images/avatar.png" 
-                  alt="Linn" 
+                  src="/images/avatar-snpazin.jpg" 
+                  alt="snpazin" 
                   className="w-full h-full object-cover rounded-full"
                 />
               </div>

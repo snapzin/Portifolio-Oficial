@@ -7,7 +7,7 @@ export default function Hero() {
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Background Elements */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-[url('/images/hero-bg.png')] bg-cover bg-center opacity-20 mix-blend-screen" />
+        <div className="absolute inset-0 bg-[url('/images/hero-bg-batman.gif')] bg-cover bg-center opacity-30 mix-blend-screen" />
         <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent opacity-50" />
       </div>
@@ -23,8 +23,8 @@ export default function Hero() {
             <div className="absolute inset-0 rounded-full border-2 border-dashed border-primary/50 animate-[spin_10s_linear_infinite]" />
             <div className="absolute inset-2 rounded-full border border-primary/20" />
             <img 
-              src="/images/avatar.png" 
-              alt="Linn Avatar" 
+              src="/images/avatar-snpazin.jpg" 
+              alt="snpazin Avatar" 
               className="w-full h-full object-cover rounded-full p-1 bg-background relative z-10"
             />
             <div className="absolute bottom-0 right-0 w-8 h-8 bg-background rounded-full flex items-center justify-center border border-border z-20">
@@ -39,8 +39,8 @@ export default function Hero() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="text-6xl md:text-8xl font-black tracking-tighter mb-4 relative inline-block"
         >
-          <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-b from-white to-white/50">LINN</span>
-          <span className="absolute -inset-1 text-primary/20 blur-lg select-none z-0">LINN</span>
+          <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-b from-white to-white/50">SNPAZIN</span>
+          <span className="absolute -inset-1 text-primary/20 blur-lg select-none z-0">SNPAZIN</span>
         </motion.h1>
 
         <motion.div

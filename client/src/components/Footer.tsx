@@ -65,7 +65,7 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-border/10 text-sm text-muted-foreground">
-          <p>© 2025 Lucas Coleoni (Linn). Todos os direitos reservados.</p>
+          <p>© 2025 snpazin. Todos os direitos reservados.</p>
           <div className="flex items-center gap-2 mt-4 md:mt-0">
             <span>Feito com</span>
             <Heart className="w-4 h-4 text-red-500 fill-red-500 animate-pulse" />
