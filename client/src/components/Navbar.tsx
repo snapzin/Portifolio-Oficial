@@ -47,10 +47,7 @@ export default function Navbar() {
       <div className="container flex items-center justify-between">
         <Link href="/">
           <a className="flex items-center gap-2 group cursor-pointer">
-            <div className="relative">
-              <div className="absolute -inset-1 bg-primary/20 blur-sm rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <div className="relative w-3 h-3 bg-primary rounded-sm" />
-            </div>
+            
             <span className="font-mono font-bold text-xl tracking-tighter">PORTFOLIO</span>
           </a>
         </Link>
