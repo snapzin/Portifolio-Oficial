@@ -13,26 +13,6 @@ export default function Hero() {
       </div>
 
       <div className="container relative z-10 flex flex-col items-center text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="mb-8 relative"
-        >
-          <div className="relative w-32 h-32 md:w-40 md:h-40 mx-auto mb-6">
-            
-            
-            <img 
-              src="/images/avatar-snpazin.jpg" 
-              alt="snpazin Avatar" 
-              className="w-full h-full object-cover rounded-full p-1 bg-background relative z-10"
-            />
-            <div className="absolute bottom-0 right-0 w-8 h-8 bg-background rounded-full flex items-center justify-center border border-border z-20">
-              <span className="text-xl">👋</span>
-            </div>
-          </div>
-        </motion.div>
-
         <motion.h1
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
