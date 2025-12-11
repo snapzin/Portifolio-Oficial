@@ -41,7 +41,7 @@ export default function About() {
 
             <div className="inline-flex items-center gap-3 px-4 py-3 bg-card border border-border rounded-lg">
               <Gamepad2 className="w-5 h-5 text-primary" />
-              <span className="font-mono text-sm">Otaku no tempo livre</span>
+              <span className="font-mono text-sm">player de vava</span>
             </div>
           </div>
 
